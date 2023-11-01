@@ -13,6 +13,10 @@ const App=()=>{
             setTodos([{id:`${todo}-${Date.now()}`,todo}, ...todos])
         }
     }
+    const handleDelete=(id)=>{
+        const delTodo=todos.filter((to)=>to.id!==id)
+        setTodos([...delTodo])
+    }
     return (
     <>
         <div className="App">
@@ -27,8 +31,8 @@ const App=()=>{
                 <ul className="allTodos">
                     {todos.map((t)=>(
                     <li className="singleTodo">
-                        <span className="todoText">{t.todo}</span>
-                        <button>Delete</button>
+                        <span className="todoText" key={t.id}>{t.todo}</span>
+                        <button onClick={()=>handleDelete(t.id)}>Delete</button>
                     </li>
                     ))}
                 </ul>
@@ -38,3 +42,4 @@ const App=()=>{
     )
 }
 export default App;
+
