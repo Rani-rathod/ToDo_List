@@ -1,6 +1,6 @@
 const TimeInput = () =>{
     return(
-        <input type="time" />
+        <input className="Time" type="time" />
     );
 };
 export default TimeInput;

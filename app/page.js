@@ -5,14 +5,15 @@ import TimeInput from './Time.js';
 
 const App = () => {
   const [todo, setTodo] = useState("");
+  const [priority, setPriority] = useState("1");
   const [todos, setTodos] = useState([]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     if (todo !== "") {
-      setTodos([{ id: `${todo}-${Date.now()}`, todo, done: false }, ...todos]);
-      setTodo(""); 
+      setTodos([{ id: `${todo}-${Date.now()}`, todo, done: false, priority }, ...todos]);
+      setTodo("");
     }
   };
 
@@ -42,23 +43,24 @@ const App = () => {
               value={todo}
               onChange={(e) => setTodo(e.target.value)}
             />
-          
+            <select  className="dropdwon" value={priority} onChange={(e) => setPriority(e.target.value)}>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+            </select>
+            <TimeInput />
             <button type="submit">Add</button>
           </form>
-          
-          <Dropdowns />
-          <TimeInput />
-          
           <ul className="allTodos">
             {todos.map((t) => (
               <li className="singleTodo" key={t.id}>
-              
-                <span className="todoText" style={{ textDecoration: t.done ? 'line-through' : 'none' }}>{t.todo}</span>
+                <span className="todoText" style={{ textDecoration: t.done ? 'line-through' : 'none' }}>
+                  {t.priority}: {t.todo}
+                </span>
                 <button onClick={() => done(t.id)}>
                   {t.done ? 'Not done' : 'Done'}
                 </button>
                 <button onClick={() => handleDelete(t.id)}>Delete</button>
-                
               </li>
             ))}
           </ul>
@@ -69,3 +71,4 @@ const App = () => {
 };
 
 export default App;
+
