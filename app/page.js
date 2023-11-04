@@ -1,4 +1,3 @@
-
 "use client"
 import React, { useState } from 'react';
 import Dropdowns from './dropD.js';
@@ -7,7 +6,7 @@ import TimeInput from './Time.js';
 const App = () => {
   const [todo, setTodo] = useState("");
   const [priority, setPriority] = useState("1");
-  const [time, setTime] = useState("");
+  const [time, setTime] = useState(""); 
   const [todos, setTodos] = useState([]);
 
   const handleSubmit = (e) => {
@@ -19,8 +18,7 @@ const App = () => {
         ...todos
       ]);
       setTodo("");
-      setPriority("1");
-      setTime("");
+      setTime(""); 
     }
   };
 
@@ -45,9 +43,6 @@ const App = () => {
     );
   };
 
-
-  const sortedTodos = [...todos].sort((a, b) => a.priority - b.priority);
-
   return (
     <>
       <div className="App">
@@ -61,11 +56,7 @@ const App = () => {
               value={todo}
               onChange={(e) => setTodo(e.target.value)}
             />
-            <select
-              className="dropdwon"
-              value={priority}
-              onChange={(e) => setPriority(e.target.value)}
-            >
+            <select className="dropdwon" value={priority} onChange={(e) => setPriority(e.target.value)}>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -78,7 +69,7 @@ const App = () => {
             <button type="submit">Add</button>
           </form>
           <ul className="allTodos">
-            {sortedTodos.map((t) => (
+            {todos.map((t) => (
               <li className="singleTodo" key={t.id}>
                 <span className="todoText" style={{ textDecoration: t.done ? 'line-through' : 'none' }}>
                    {t.priority} .
@@ -98,49 +89,4 @@ const App = () => {
 };
 
 export default App;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
