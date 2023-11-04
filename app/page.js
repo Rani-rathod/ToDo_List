@@ -35,6 +35,7 @@ const App = () => {
         <div className="container">
           <h1>Todo List</h1>
           <form className="todoForm" onSubmit={handleSubmit}>
+          
             <input
               type="text"
               placeholder="Enter a Task..."
@@ -67,7 +68,6 @@ const App = () => {
     </>
   );
 };
-
 export default App;
 
 
