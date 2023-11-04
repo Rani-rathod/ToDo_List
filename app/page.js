@@ -81,13 +81,13 @@ const App = () => {
             {sortedTodos.map((t) => (
               <li className="singleTodo" key={t.id}>
                 <span className="todoText" style={{ textDecoration: t.done ? 'line-through' : 'none' }}>
-                  {t.priority}: {t.todo}
+                   {t.priority} .
+                   {t.todo} : {t.time}
                 </span>
                 <button onClick={() => done(t.id)}>
                   {t.done ? 'Not done' : 'Done'}
                 </button>
                 <button onClick={() => handleDelete(t.id)}>Delete</button>
-                <span className="todoText"> {t.time}</span>
               </li>
             ))}
           </ul>
