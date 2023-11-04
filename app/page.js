@@ -47,6 +47,7 @@ const App = () => {
 
 
   const sortedTodos = [...todos].sort((a, b) => a.priority - b.priority);
+ 
 
   return (
     <>
