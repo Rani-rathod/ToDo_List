@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Dropdowns from './dropD.js';
 import TimeInput from './Time.js';
 
+
 const App = () => {
   const [todo, setTodo] = useState("");
   const [priority, setPriority] = useState("1");
@@ -45,9 +46,7 @@ const App = () => {
     );
   };
 
-
   const sortedTodos = [...todos].sort((a, b) => a.priority - b.priority);
- 
 
   return (
     <>
@@ -78,20 +77,35 @@ const App = () => {
             />
             <button type="submit">Add</button>
           </form>
-          <ul className="allTodos">
-            {sortedTodos.map((t) => (
-              <li className="singleTodo" key={t.id}>
-                <span className="todoText" style={{ textDecoration: t.done ? 'line-through' : 'none' }}>
-                   {t.priority} .
-                   {t.todo} : {t.time}
-                </span>
-                <button onClick={() => done(t.id)}>
-                  {t.done ? 'Not done' : 'Done'}
-                </button>
-                <button onClick={() => handleDelete(t.id)}>Delete</button>
-              </li>
-            ))}
-          </ul>
+          <table className="data-table">
+            <thead>
+              <tr>
+                <th>Priority</th>
+                <th>Task</th>
+                <th>Time</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+            
+              {sortedTodos.map((t) => (
+                <tr key={t.id}>
+                  <td>{t.priority}</td>
+                  <td>{t.todo}</td>
+                  <td>{t.time}</td>
+                  <td>
+                    <button onClick={() => done(t.id)}>
+                      {t.done ? 'Not done' : 'Done'}
+                    </button>
+                  </td>
+                  <td>
+                    <button onClick={() => handleDelete(t.id)}>Delete</button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </div>
     </>
@@ -99,36 +113,6 @@ const App = () => {
 };
 
 export default App;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
