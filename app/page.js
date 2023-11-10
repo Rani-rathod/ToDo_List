@@ -1,6 +1,7 @@
+
 "use client"
 import React, { useState } from 'react';
-import Dropdowns from './dropD.js';
+import FilteredList from './dropD.js';
 import TimeInput from './Time.js';
 
 
@@ -14,13 +15,10 @@ const App = () => {
     e.preventDefault();
 
     if (todo !== "") {
-      setTodos([
-        { id: `${todo}-${Date.now()}`, todo, done: false, priority, time },
-        ...todos
-      ]);
-      setTodo("");
-      setPriority("1");
-      setTime("");
+      setTodos([{ id: `${todo}-${Date.now()}`, todo, done: false, priority, time }, ...todos]);
+        setTodo("");
+        setPriority("1");
+        setTime("");
     }
   };
 
@@ -46,7 +44,6 @@ const App = () => {
   };
 
   const sortedTodos = [...todos].sort((a, b) => a.priority - b.priority);
- 
 
   return (
     <>
@@ -54,6 +51,7 @@ const App = () => {
         <div className="container">
           <h1>Todo List</h1>
           <form className="todoForm" onSubmit={handleSubmit}>
+          
             <input
               type="text"
               placeholder="Enter a Task..."
@@ -66,6 +64,7 @@ const App = () => {
               value={priority}
               onChange={(e) => setPriority(e.target.value)}
             >
+            
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -75,8 +74,10 @@ const App = () => {
               value={time}
               onChange={(e) => setTime(e.target.value)}
             />
+            
             <button type="submit">Add</button>
           </form>
+          <FilteredList />
           <table className="data-table">
             <thead>
               <tr>
@@ -87,8 +88,8 @@ const App = () => {
                 <th>Actions</th>
               </tr>
             </thead>
-            <tbody>
             
+            <tbody>
               {sortedTodos.map((t) => (
                 <tr key={t.id}>
                   <td>{t.priority}</td>
@@ -105,14 +106,16 @@ const App = () => {
                 </tr>
               ))}
             </tbody>
+            
           </table>
         </div>
       </div>
     </>
   );
 };
-
 export default App;
+
+
 
 
 

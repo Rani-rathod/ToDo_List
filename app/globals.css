@@ -2,6 +2,7 @@ body{
     background-color:#282c34;
     color:white;
 }
+
 .App{
     min-height:100vh;
     display:flex;
@@ -9,6 +10,7 @@ body{
     align-items:center;
     color:white;
 }
+
 .container{
     display:flex;
     height:50vh;
@@ -18,23 +20,27 @@ body{
     font-size:20px;
     color:white;
 }
+
 .todoForm{
     display:flex;
     justify-content:space-around;
     width:450px;
 }
+
 input{
     width:80%;
     padding:10px;
     border-radius:20px;
     border:none;
 }
+
 button{
     border:none;
     padding:10px;
     border-radius:20px;
     margin:0 5px;   
 }
+
 .drop{
    padding:10px; 
 }
@@ -44,6 +50,7 @@ button{
     padding:10px;
     border-radius:20px;
 }
+
 .singleTodo{
     border-radius:50px;
     margin:10px 0;
@@ -51,6 +58,7 @@ button{
     display:450px;
     align-items:center;
 }
+
 .Time{
     float:left;
 }
@@ -61,4 +69,6 @@ table, th, td {
   margin-top:50px;
   padding:10px;
 }
+
+
 
